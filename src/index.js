@@ -37,12 +37,14 @@ const addRamenToMenu = (ramen) => {
 
 };
 
-
+let ramenArray = [];
 const displayRamens = () => {
   fetch('http://localhost:3000/ramens')
   .then((response) => response.json())
   .then((data) => {
     const ramenMenu = document.getElementById("ramen-menu");
+   
+    ramenArray = data;
     data.forEach(ramen => {
       const ramenImg = document.createElement('img');
       ramenImg.src = ramen.image;
@@ -54,27 +56,30 @@ const displayRamens = () => {
   .catch((error) => console.error('Error', error));
 };
 
-// const updateRamen = (ramen) => {
-//   fetch(`http://localhost:3000/ramens/${ramen.id}`, {
-//     method: 'PATCH',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(ramen),
-//   })
-//   .then(response => response.json())
-//   .then(updateRamen => {
-//     console.log('Ramen updated:', updateRamen);
-//   })
-//   .catch(error => {
-//     console.error('Error updating Ramen', error);
-//   });
-// }
-// updateRamen(newRamen);
+// advanced deliverables
+const updateButton = document.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const ratingDisplay = document.getElementById('rating-display');
+  const editRating = document.getElementById('edit-rating').value;
+  const commentDisplay = document.getElementById('comment-display');
+  const editComment = document.getElementById('edit-comment').value;
+
+    ratingDisplay.innerHTML = `${editRating}`;
+    commentDisplay.innerHTML = editComment;
+  
+});
+
+function displayFirst () {
+  console.log(ramenArray);
+}
+
 
 const main = () => {
   document.addEventListener('DOMContentLoaded', (event) => {
+    let ramenArray = [];
     displayRamens();
+    console.log(ramenArray)
+    displayFirst();
     addSubmitListener();
   });
 };
@@ -88,3 +93,6 @@ export {
   handleClick,
   main,
 };
+
+
+
