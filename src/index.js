@@ -44,7 +44,7 @@ const displayRamens = () => {
   .then((data) => {
     const ramenMenu = document.getElementById("ramen-menu");
    
-    ramenArray = data;
+    // ramenArray = data;
     data.forEach(ramen => {
       const ramenImg = document.createElement('img');
       ramenImg.src = ramen.image;
@@ -57,7 +57,11 @@ const displayRamens = () => {
 };
 
 // advanced deliverables
-const updateButton = document.addEventListener('submit', (event) => {
+
+
+const updateButton = document.getElementById('update-button');
+const editRamen = document.getElementById('edit-ramen');
+editRamen.addEventListener('submit', (event) => {
   event.preventDefault();
   const ratingDisplay = document.getElementById('rating-display');
   const editRating = document.getElementById('edit-rating').value;
@@ -69,6 +73,9 @@ const updateButton = document.addEventListener('submit', (event) => {
   
 });
 
+
+
+
 // function displayFirst () {
 //   let ramenArray =
 // }
@@ -76,9 +83,7 @@ const updateButton = document.addEventListener('submit', (event) => {
 
 const main = () => {
   document.addEventListener('DOMContentLoaded', (event) => {
-    let ramenArray = [];
     displayRamens();
-    // displayFirst();
     addSubmitListener();
   });
 };
