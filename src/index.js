@@ -37,7 +37,7 @@ const addRamenToMenu = (ramen) => {
 
 };
 
-let ramenArray = [];
+// let ramenArray = [];
 const displayRamens = () => {
   fetch('http://localhost:3000/ramens')
   .then((response) => response.json())
@@ -69,17 +69,16 @@ const updateButton = document.addEventListener('submit', (event) => {
   
 });
 
-function displayFirst () {
-  console.log(ramenArray);
-}
+// function displayFirst () {
+//   let ramenArray =
+// }
 
 
 const main = () => {
   document.addEventListener('DOMContentLoaded', (event) => {
     let ramenArray = [];
     displayRamens();
-    console.log(ramenArray)
-    displayFirst();
+    // displayFirst();
     addSubmitListener();
   });
 };
